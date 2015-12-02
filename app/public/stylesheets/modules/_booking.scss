@@ -129,12 +129,12 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
     &--leave {
-      -webkit-animation: modal-leave 0.5s ease-in-out;
-      -webkit-animation-fill-mode: forwards;
+      animation: modal-leave 0.5s ease-in-out;
+      animation-fill-mode: forwards;
     }
     &--active {
       display: block;
-      -webkit-animation: modal-enter 0.5s ease-in-out;
+      animation: modal-enter 0.5s ease-in-out;
       .booking-info-content {
         opacity: 1;
       }
@@ -169,7 +169,7 @@
 
 }
 
-@-webkit-keyframes modal-enter {
+@keyframes modal-enter {
   from {
     opacity: 0;
     transform: rotateX(-60deg);
@@ -180,7 +180,7 @@
   }
 }
 
-@-webkit-keyframes modal-leave {
+@keyframes modal-leave {
   from {
     opacity: 1;
     transform: rotateX(0);
