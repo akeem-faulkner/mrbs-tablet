@@ -152,8 +152,16 @@
             if (typeof vm.bookings[index].data == 'undefined') {
 
                 vm.bookingFormData = vm.bookings[index];
+
+                $('.booking-form form').on('click.initial', function(){
+                    $(document).scrollTop($('.booking-form form').offset().top);
+                    $(this).off('click.initial');
+                });
+
                 $timeout(function () {
                     vm.showBookingForm = true;
+
+
                 }, 300);
 
             } else {
