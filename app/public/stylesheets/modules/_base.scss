@@ -17,6 +17,13 @@ input {
   margin: 0 !important;
 }
 
+.wrapper {
+  position:relative; //that's it
+  overflow:hidden;
+  height: 100%;
+  width: 100%;
+}
+
 .alert-box {
   margin-top: 0;
 }
