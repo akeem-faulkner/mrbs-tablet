@@ -1,0 +1,22 @@
+$background-color: #000;
+$primary-color: #ffffff;
+$active-color: #d95e61;
+
+body {
+  background: $background-color;
+  color: $primary-color;
+  overflow: hidden;
+}
+
+label {
+  color: $primary-color;
+  font-size: 1.3rem;
+
+}
+input {
+  margin: 0 !important;
+}
+
+.alert-box {
+  margin-top: 0;
+}

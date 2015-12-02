@@ -1,0 +1,21 @@
+.booking(ng-controller="bookingsCtrl as vm")
+    ul.small-block-grid-9.booking-list
+        booking-item(ng-repeat="bookingSlot in vm.bookings", ng-click="vm.getBookingSlot($index)", ng-class="{'booking-list__item--active': bookingSlot.data}", time="bookingSlot.time")
+    .row(data-equalizer)
+        .small-6.columns.booking-column(data-equalizer-watch)
+            date-time
+        .small-6.columns.booking-column(data-equalizer-watch)
+            .booking-current(ng-if="vm.isCurrentBooking")
+                h3.booking-current__name {{vm.isCurrentBooking.data.name}}
+                p.booking-current__info Booked until {{vm.formatDate(vm.isCurrentBooking.data.to) }}
+            .booking-current(ng-if="!vm.isCurrentBooking")
+                h3.booking-current__status Available
+                p.booking-current__status-info Room free {{vm.nextBooking ? 'until ' + vm.nextBooking.time : ''}}
+
+
+
+    include ./booking-form
+
+    include ./booking-Info
+
+

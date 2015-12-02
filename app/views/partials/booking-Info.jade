@@ -1,0 +1,16 @@
+.booking-info( ng-class="{'booking-info--active' : vm.bookingInfo, 'booking-info--leave' : !vm.bookingInfo}")
+    .booking-info-close(ng-click="vm.bookingInfo = null")
+        .booking-info-close__line
+        .booking-info-close__line
+    .booking-info-container
+        h2.booking-info__header Booking Info
+        .booking-info-content
+            .row
+                .small-6.columns.booking-info__title Booking name
+                .small-6.columns.booking-info__data {{vm.bookingInfo.data.name}}
+            .row
+                .small-6.columns.booking-info__title Start Time
+                .small-6.columns.booking-info__data {{vm.formatDate(vm.bookingInfo.data.from, 'H:mma') }}
+            .row
+                .small-6.columns.booking-info__title End Time
+                .small-6.columns.booking-info__data {{vm.formatDate(vm.bookingInfo.data.to, 'H:mma') }}

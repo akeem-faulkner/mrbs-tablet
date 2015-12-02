@@ -1,0 +1,193 @@
+.booking {
+  &-current {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    &__name {
+      font-size: 65px;
+      color: $active-color;
+    }
+    &__info {
+      font-size: 36px;
+      color: $active-color;
+    }
+    &__status {
+      color: $primary-color;
+      font-size: 65px;
+    }
+    &__status-info {
+      color: $primary-color;
+      font-size: 36px;
+    }
+  }
+  &-list {
+    display: inline-block;
+    margin: 0 auto;
+    width: 935px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+    &__item-time {
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 23px;
+    }
+    &__item {
+      position: relative;
+      overflow: hidden;
+      height: 95px !important;
+      width: 95px !important;
+      background: #008033;
+      margin-right: 10px;
+      border-radius: 10px;
+      &--active {
+        background: red;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  &-form {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    height: 110%;
+    width: 100%;
+    background: #000;
+    transition: .7s cubic-bezier(0.71, -0.35, 0.58, 1);
+    &--active {
+      top: 0;
+    }
+    form {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      top: 50%;
+      transform: translateY(-50%);
+
+    }
+    &__row {
+      min-height: 110px;
+    }
+  }
+  &-column {
+    &:first-child {
+      border-right: 3px solid $primary-color;
+    }
+
+  }
+  &-info-close {
+    width: 40px;
+    height: 40px;
+    border: 3px solid $primary-color;
+    border-radius: 50%;
+    position: relative;
+    margin: 25px;
+    float: right;
+    cursor: pointer;
+    transition: 0.25s ease-in;
+    &:focus, &:active {
+      transform: rotate(-180deg);
+    }
+    &__line {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: $primary-color;
+      top: 50%;
+      transition: 0.7s ease-out;
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
+  &-info {
+    &-content {
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    &--leave {
+      -webkit-animation: modal-leave 0.5s ease-in-out;
+      -webkit-animation-fill-mode: forwards;
+    }
+    &--active {
+      display: block;
+      -webkit-animation: modal-enter 0.5s ease-in-out;
+      .booking-info-content {
+        opacity: 1;
+      }
+      .booking-info-close__line {
+        transform: translateY(-50%) rotate(45deg);
+        &:last-child {
+          transform: translateY(-50%) rotate(-45deg);
+        }
+      }
+    }
+    &__title {
+      text-align: right;
+      font-weight: initial;
+      font-size: 30px;
+      border-right: 1px solid $primary-color;
+    }
+    &-container {
+      padding-top: 30px;
+      padding-left: 30px;
+
+    }
+
+    &__data {
+      font-size: 30px;
+      font-weight: 100;
+    }
+    &__header {
+      color: $primary-color;
+    }
+
+  }
+
+}
+
+@-webkit-keyframes modal-enter {
+  from {
+    opacity: 0;
+    transform: rotateX(-60deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateX(0);
+  }
+}
+
+@-webkit-keyframes modal-leave {
+  from {
+    opacity: 1;
+    transform: rotateX(0);
+
+  }
+  to {
+    opacity: 0;
+    transform: rotateX(-60deg);
+  }
+}

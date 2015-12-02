@@ -1,0 +1,16 @@
+web:
+  build: .
+  volumes:
+    - "./app:/src"
+  environment:
+    PORT: 3000
+    API_HOST: http://test.docker:10488/api
+    DB_HOST: mrbsdesktop_db_1
+    DB_USER: root
+    DB_PASS: root
+    DB_DB: mrbs
+    BASE_URL: http://test.docker:3000
+  ports:
+  - "3000:3000"
+  external_links:
+    - mrbsdesktop_db_1:db

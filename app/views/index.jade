@@ -1,0 +1,13 @@
+extends layout
+block content
+
+  script(type='text/javascript').
+    var API_HOST = !{JSON.stringify(API_HOST)};
+
+  toaster-container(toaster-options="{'close-button': true}")
+
+  .wrapper(ng-controller="roomCtrl as vm")
+    header.header
+      h1.header-title {{vm.room.name}}
+    include ./partials/load
+    include ./partials/booking

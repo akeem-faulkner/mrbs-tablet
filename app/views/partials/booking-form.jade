@@ -1,0 +1,14 @@
+.booking-form(ng-class="{'booking-form--active': vm.showBookingForm}")
+    .row
+        form(ng-submit="vm.createBooking()", name="bookingForm", novalidate).small-6.columns.small-centered
+            .booking-form__row
+                label Employee name:
+                    input(type="text", autocomplete="off", placeholder="Employee name", name="bookingForm[employeeName]", ng-model="bookingForm.employeeName", required)
+                    small(ng-if="bookingForm['bookingForm[employeeName]'].$dirty && bookingForm['bookingForm[employeeName]'].$invalid || bookingForm.$submitted && bookingForm.$invalid && bookingForm['bookingForm[employeeName]'].$invalid ").alert-box.alert.radius Please enter your name
+            .booking-form__row
+                label Name of the meeting:
+                    input(type="text", autocomplete="off", placeholder="Meeting name", name="bookingForm[meetingName]", ng-model="bookingForm.meetingName", required)
+                    small(ng-if="bookingForm['bookingForm[meetingName]'].$dirty && bookingForm['bookingForm[meetingName]'].$invalid || bookingForm.$submitted && bookingForm.$invalid && bookingForm['bookingForm[meetingName]'].$invalid").alert-box.alert.radius Please enter your meeting name
+            button(type="submit", value="Reserve Room").button-default Reserve Room
+            button(type="button", value="Cancel", ng-click="vm.hideBookingForm()").button-default.right Cancel
+

@@ -1,0 +1,16 @@
+.button {
+  &-default {
+    display: inline-block;
+    background: transparent;
+    border: 2px solid $primary-color;
+    padding: 10px;
+    width: 200px;
+    height: 50px;
+    outline: none;
+    overflow: hidden;
+    &:focus, &:hover, &:focus, &:hover, &:disabled {
+      border: 2px solid $primary-color !important;
+      background-color: transparent !important;
+    }
+  }
+}

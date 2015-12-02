@@ -1,0 +1,22 @@
+.date-time {
+  text-align: center;
+  font-weight: 100;
+  &__currentTime {
+    font-size: 40px;
+    &-hours {
+      font-size: 100px;
+    }
+    &-mins {
+      font-size: 74px;
+      vertical-align: text-bottom;
+      padding-left: 10px;
+    }
+  }
+  &__currentDay {
+    color: $primary-color;
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+}

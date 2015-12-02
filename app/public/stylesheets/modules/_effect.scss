@@ -1,0 +1,23 @@
+.effect {
+  &-click {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: $primary-color;
+    opacity: 0;
+    border-radius: 50%;
+    animation: click-radius-expand .7s cubic-bezier(0.06, 0.39, 0.71, 0.93) forwards;
+  }
+}
+
+@-webkit-keyframes click-radius-expand {
+  from {
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(10);
+  }
+}
