@@ -177,9 +177,14 @@
             $scope.bookingForm.$setPristine();
             vm.showBookingForm = false;
             vm.bookingFormData = null;
+
+            document.activeElement.blur();
+            $("input").blur();
+
             setTimeout(function () {
                 $(".booking-form button").prop("disabled", false);
             }, 300);
+
         }
 
         function formatDate(date, format) {
