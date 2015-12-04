@@ -4,7 +4,7 @@
   "scripts": {
     "build": "`which bash` -c 'cd gulp && gulp'",
     "watch": "`which bash` -c 'cd gulp && gulp watch'",
-    "push": "`which bash` -c 'docker build -t docker-repo.lowecloud.com/mrbs-tablet:0.2 . && docker push docker-repo.lowecloud.com/mrbs-tablet:0.2'"
+    "push": "`which bash` -c 'docker build -t docker-repo.lowecloud.com/mrbs-tablet:0.3 . && docker push docker-repo.lowecloud.com/mrbs-tablet:0.3'"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

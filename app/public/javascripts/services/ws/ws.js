@@ -6,7 +6,7 @@
 
     function Ws( ROOM_ID) {
 
-        var socket = io(location.protocol + '//' + location.hostname + ':' + location.port, { forceNew: true });
+        var socket = io();
 
 
 
@@ -15,6 +15,7 @@
 
                 return socket;
             }
+
         }
 
     }
