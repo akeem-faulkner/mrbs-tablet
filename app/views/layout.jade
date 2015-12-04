@@ -3,7 +3,8 @@ html
     head
         title MRBS
         meta(charset='UTF-8')
-        meta(name='viewport', content='width=device-width, initial-scale=1')
+        meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1,  minimum-scale=1')
+
         link(rel='apple-touch-icon', sizes='57x57', href='/assets/favicons/apple-touch-icon-57x57.png')
         link(rel='apple-touch-icon', sizes='60x60', href='/assets/favicons/apple-touch-icon-60x60.png')
         link(rel='apple-touch-icon', sizes='72x72', href='/assets/favicons/apple-touch-icon-72x72.png')
@@ -23,7 +24,8 @@ html
         meta(name='msapplication-TileImage', content='/assets/favicons/mstile-144x144.png')
         meta(name='msapplication-config', content='/assets/favicons/browserconfig.xml')
         meta(name='theme-color', content='#000000')
-
+        meta(name="apple-mobile-web-app-capable", content="yes")
+        meta(name='apple-mobile-web-app-status-bar-style', content='black-translucent')
         link(rel='stylesheet', href='/bower_components/foundation/css/foundation.min.css')
         link(rel='stylesheet', href='/bower_components/AngularJS-Toaster/toaster.min.css')
         link(rel='stylesheet', href='/stylesheets/style.css')

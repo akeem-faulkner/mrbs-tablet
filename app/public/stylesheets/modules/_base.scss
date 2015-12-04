@@ -2,10 +2,12 @@ $background-color: #000;
 $primary-color: #ffffff;
 $active-color: #d95e61;
 
-body {
+body, html {
   background: $background-color;
   color: $primary-color;
   overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 label {

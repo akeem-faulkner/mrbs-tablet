@@ -1,5 +1,6 @@
 (function () {
-    var cache;
+    var cacheBookings,
+        cache;
 
     angular.module('mrbs-tablet').controller('bookingsCtrl', bookingsCtrl);
 
@@ -9,8 +10,8 @@
 
         var rangeLimit = 9;
 
-        var startTime = moment().startOf('day').format('X'),
-            endTime = moment().add(24, 'hours').format('X');
+        var startTime = moment().startOf('day').subtract(GLOB.subtract, 'minutes').format('X'),
+            endTime = moment().add(24, 'hours').subtract(GLOB.subtract, 'minutes').format('X');
 
         var socket = WS.getWs();
 
@@ -30,9 +31,12 @@
         Bookings.getBookings(startTime, endTime, 30, rangeLimit).then(function (data) {
 
             vm.bookings = data;
+
             vm.isCurrentBooking = getCurrentBooking(vm.bookings);
 
-            $('.loader').delay(500).fadeOut(500);
+            $('.loader')
+                .delay(500)
+                .fadeOut(500);
 
         });
 
@@ -42,26 +46,43 @@
 
 
         function socketFunc() {
+
             socket.emit('addToRoom', ROOM_ID);
+
             socket.on('newBookingData', function (data) {
-                if (data != cache) {
+                var serverBookings = Bookings.formatBookingList(JSON.parse(data), 30, rangeLimit);
+
+                if (data != cache || (cacheBookings && cacheBookings.length && cacheBookings[0].time != serverBookings[0].time)) {
+
                     console.log('New data for room: ' + ROOM_ID);
+
                     cache = data;
-                    vm.bookings = Bookings.formatBookingList(JSON.parse(cache), 30, rangeLimit);
+
+                    cacheBookings = Bookings.formatBookingList(JSON.parse(cache), 30, rangeLimit);
+
+                    vm.bookings = serverBookings;
+
                     vm.isCurrentBooking = getCurrentBooking(vm.bookings);
+
                     $scope.$apply();
                 }
 
+
             });
+
         }
 
         $interval(function () {
+
             vm.isCurrentBooking = getCurrentBooking(vm.bookings);
             vm.nextBooking = getNextBooking(vm.bookings);
+
         }, 1000);
 
         function getNextBooking(bookings) {
+
             var nextBooking = false;
+
             for (var i = 0; i < bookings.length; i++) {
                 if (bookings[i].data) {
                     nextBooking = bookings[i];
@@ -74,6 +95,7 @@
 
 
         function getCurrentBooking(bookings) {
+
             var ra;
             var isBooking = false;
 
@@ -116,8 +138,10 @@
                 var data = {"meetingNotes": "sdfsd", "name": "sdfsdfvvv", "startTime": "1448926200", "endTime": "1448928000", "room": "9"};
 
                 Bookings.createBooking(newBooking).then(function (data) {
+
                     var message = "Booking: '" + data.name + "'  has been confirmed for "
                         + moment(data.startTime * 1000).format('H:mm');
+
                     toaster.pop({
                         type: 'success',
                         title: 'Success',
@@ -126,6 +150,7 @@
                     });
 
                     hideBookingForm();
+
                 }, function (error) {
                     var errorInfo = JSON.parse(error.data.global[0]);
                     var conflict = errorInfo.conflicts[0];
@@ -153,7 +178,7 @@
 
                 vm.bookingFormData = vm.bookings[index];
 
-                $('.booking-form form').on('click.initial', function(){
+                $('.booking-form form').on('click.initial', function () {
                     $(document).scrollTop($('.booking-form form').offset().top);
                     $(this).off('click.initial');
                 });
@@ -190,7 +215,9 @@
             $("input").blur();
 
             setTimeout(function () {
+
                 $(".booking-form button").prop("disabled", false);
+
             }, 300);
 
         }

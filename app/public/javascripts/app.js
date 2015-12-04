@@ -1,4 +1,7 @@
-(function(){
+var GLOB = {
+    subtract: 0
+};
+(function () {
     var queryArray = location.search.substr(1).split('&');
     var query = {};
 
@@ -41,25 +44,40 @@
 
 })();
 
-$(document).ready(function(){
+$(document).ready(function () {
 
-    setTimeout(function(){
+    setTimeout(function () {
         window.location.reload();
-    },1.8e+6);
+    }, 1.8e+6);
 
-    $('.button-default').click(function(e){
+    $('.button-default').on('click', buttonEffect);
+    $('.button-default').on('touchend', buttonEffect);
+    function buttonEffect(e) {
 
         var $this = $(this);
         var effect = document.createElement('span');
+        var x, y;
 
         effect.className = 'effect-click';
-        effect.style.left = e.offsetX + 'px';
-        effect.style.top = e.offsetY + 'px';
+
+        if (e.type == 'click') {
+            if(! e.delegateTarget) {
+                x = e.offsetX + 'px';
+                y = e.offsetY + 'px';
+            }
+        } else {
+            x = e.originalEvent.changedTouches[0].pageX - $this.offset().left;
+            y = e.originalEvent.changedTouches[0].pageY - $this.offset().top;
+        }
+
+        effect.style.left = x;
+        effect.style.top = y;
         $this.append(effect);
 
-        setTimeout(function(){
+        setTimeout(function () {
             effect.parentNode.removeChild(effect);
         }, 1000);
 
-    });
+
+    }
 });

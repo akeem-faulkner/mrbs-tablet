@@ -6,8 +6,9 @@
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
+    padding: 20px;
     &__name {
-      font-size: 65px;
+      font-size: 40px;
       color: $active-color;
     }
     &__info {

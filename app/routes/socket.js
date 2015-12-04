@@ -1,7 +1,6 @@
 var io = require("socket.io")();
 var request = require("request");
 var moment = require("moment");
-
 module.exports = function (app) {
 
     var rooms = [];
@@ -22,16 +21,14 @@ module.exports = function (app) {
                 clients.push(socket.id);
             }
             socket.join(data);
-
-            setInterval(function(){
-                for(var i = 0; i < rooms.length; i++) {
+            setInterval(function () {
+                for (var i = 0; i < rooms.length; i++) {
                     checkBookings(socket, rooms[i])
                 }
             }, 2000);
         });
 
     });
-
 
 
     function checkBookings(socket, roomId) {

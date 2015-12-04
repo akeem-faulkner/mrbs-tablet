@@ -39,7 +39,7 @@ angular.module('mrbs-tablet').service('Bookings', Bookings);
             },
             formatBookingList : function(data, interval, limit) {
 
-                var timeRange = timeSlotRange.getTimeRange(moment(), interval, limit);
+                var timeRange = timeSlotRange.getTimeRange(moment().subtract(GLOB.subtract, 'minutes'), interval, limit);
 
                 var output = this.mergeToTimeRange(formatBookings(data.data), timeRange, interval, limit);
 
