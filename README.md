@@ -2,6 +2,9 @@
 
 Ipad tablet optimised app to book a room
 
+### requirments
+docker, docker-compose, dinghy, bower, node, npm
+
 
 ##Configuration
 Update the params in the docker-compose.yml file
