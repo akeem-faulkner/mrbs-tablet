@@ -1,8 +1,3 @@
-/**
-    The base class for all elements that appear in the game.
-    @author <a href="mailto:matthewcasperson@gmail.com">Matthew Casperson</a>
-    @class
-*/
 function GameObject()
 {
     /** Display depth order. A smaller zOrder means the element is rendered first, and therefor
@@ -44,11 +39,7 @@ function GameObject()
         g_GameObjectManager.removeGameObject(this);
     }
 }
-/**
-    The base class for all elements that appear in the game.
-    @author <a href="mailto:matthewcasperson@gmail.com">Matthew Casperson</a>
-    @class
-*/
+
 function VisualGameObject()
 {
     /**
@@ -93,12 +84,7 @@ function VisualGameObject()
 }
 VisualGameObject.prototype = new GameObject;
 
-/**
-    A class that display a repeating texture that can optionall be offset in either
-	the x or y axis
-    @author <a href="mailto:matthewcasperson@gmail.com">Matthew Casperson</a>
-    @class
-*/
+
 function RepeatingGameObject()
 {
     /** The width that the final image will take up
@@ -184,11 +170,7 @@ function RepeatingGameObject()
 }
 RepeatingGameObject.prototype = new VisualGameObject();
 
-/**
-    Displays an animated Game Object
-    @author <a href="mailto:matthewcasperson@gmail.com">Matthew Casperson</a>
-    @class
-*/
+
 function AnimatedGameObject()
 {
     /**
@@ -287,12 +269,8 @@ Array.prototype.removeObject = function(object)
             break;
         }
     }
-}
-/**
-    The ApplicationManager is used to manage the application itself.
-    @author <a href="mailto:matthewcasperson@gmail.com">Matthew Casperson</a>
-    @class
-*/
+};
+
 function ApplicationManager()
 {
     /**
@@ -305,11 +283,7 @@ function ApplicationManager()
         return this;
     }
 }
-/**
-    A manager for all the objects in the game
-    @author <a href="mailto:matthewcasperson@gmail.com">Matthew Casperson</a>
-    @class
-*/
+
 function GameObjectManager()
 {
     /** An array of game objects 

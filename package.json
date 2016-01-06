@@ -2,6 +2,7 @@
   "name": "mrbs-tablet",
   "version": "0.2.0",
   "scripts": {
+    "setup": "`which bash` -c 'cd app && npm install && cd public && bower install'",
     "build": "`which bash` -c 'cd gulp && gulp'",
     "watch": "`which bash` -c 'cd gulp && gulp watch'",
     "push": "`which bash` -c 'docker build -t docker-repo.lowecloud.com/mrbs-tablet:0.3 . && docker push docker-repo.lowecloud.com/mrbs-tablet:0.3'"

@@ -4,10 +4,9 @@
 
     Ws.$inject = ['ROOM_ID'];
 
-    function Ws( ROOM_ID) {
+    function Ws(ROOM_ID) {
 
         var socket = io();
-
 
 
         return {

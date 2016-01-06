@@ -1,7 +1,9 @@
-(function(){
+(function(window){
 
     angular.module('mrbs-tablet').directive('dateTime', dateTime);
-    dateTime.$inject = ['$interval']
+
+    dateTime.$inject = ['$interval'];
+
     function dateTime($interval) {
         return {
             restrict: 'E',
@@ -18,6 +20,7 @@
                     scope.minutes = timer.getCurrentMinutes();
                     scope.date = timer.getCurrentDate();
                 }, 50);
+
                 $(document).foundation('equalizer', 'reflow');
             }
         }
@@ -38,5 +41,9 @@
         return moment().format('mm');
     };
 
+    if(typeof window['mrbs-tablet'] !== 'undefined' && typeof window['mrbs-tablet']['utils'] !== 'undefined') {
+        window['mrbs-tablet']['utils']['DateTime'] = DateTime;
+    }
 
-})();
+
+})(window);

@@ -1,4 +1,5 @@
 (function () {
+
     var cacheBookings,
         cache;
 
@@ -93,7 +94,6 @@
             return nextBooking;
         }
 
-
         function getCurrentBooking(bookings) {
 
             var ra;
@@ -185,7 +185,6 @@
 
                 $timeout(function () {
                     vm.showBookingForm = true;
-
 
                 }, 300);
 

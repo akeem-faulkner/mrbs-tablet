@@ -6,7 +6,7 @@ angular.module('mrbs-tablet').service('Bookings', Bookings);
     function Bookings($http, Restangular, ROOM_ID) {
 
         var Bookings = Restangular.all('entries');
-        var timeSlotRange = new TimeSlotRange();
+        var timeSlotRange = new window['mrbs-tablet']['utils']['TimeSlotRange']();
 
         function formatBookings(data) {
             var output = {};

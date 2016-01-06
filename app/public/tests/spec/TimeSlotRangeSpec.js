@@ -2,7 +2,7 @@ describe("TimeSlotRange Constructor", function () {
     var timeSlotRange;
 
     beforeEach(function () {
-        timeSlotRange = new TimeSlotRange();
+        timeSlotRange = new window['mrbs-tablet']['utils']['TimeSlotRange']();
     });
 
     describe("roundToNearestHalfHour(time, nearest)", function () {
@@ -39,13 +39,13 @@ describe("TimeSlotRange Constructor", function () {
 
         });
 
-        it("should return time slots to end time if the 'end' argument is present", function () {
+        it("should return time slots to end time if the rangeObject argument is present", function () {
 
             var start = moment();
             var end = moment().add(1, 'hour');
 
-            var results = timeSlotRange.getTimeRange(start, 30, 10, end);
-            expect(results[results.length - 1].time).toEqual(timeSlotRange.roundToNearestHalfHour(end).format('H:mm'));
+            var results = timeSlotRange.getTimeRange(start, 30, 10, {start:start, end: end});
+            expect(results[results.length - 1].time).toEqual(timeSlotRange.roundToNearestHalfHour(end).subtract(30, 'minutes').format('H:mm'));
 
         });
     });

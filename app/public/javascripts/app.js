@@ -1,7 +1,9 @@
+//for testing purposes to move time.
 var GLOB = {
     subtract: 0
 };
-(function () {
+
+(function (window) {
     var queryArray = location.search.substr(1).split('&');
     var query = {};
 
@@ -42,7 +44,14 @@ var GLOB = {
 
     }
 
-})();
+    window['mrbs-tablet'] = {
+        utils : {
+
+        }
+    };
+
+}(window));
+
 
 $(document).ready(function () {
 
@@ -52,6 +61,7 @@ $(document).ready(function () {
 
     $('.button-default').on('click', buttonEffect);
     $('.button-default').on('touchend', buttonEffect);
+
     function buttonEffect(e) {
 
         var $this = $(this);
